@@ -31,20 +31,22 @@ public class MQService {
 			String helloWorld = "Hello World!";
 			jmsTemplate.convertAndSend(queueName, helloWorld);
 			// LOG.debug("Successfully Sent message: {} to the queue", helloWorld);
-			LOG.debug("We just change the log statement: {} to the queue " + queueName, helloWorld);
+			LOG.debug("Successfully Sent message: {} to the queue " + queueName, helloWorld);
 			return helloWorld;
 		} catch (JmsException ex) {
 			// throw new AppException("MQAPP001", "Error sending message to the queue.", ex);
 			throw new AppException("MQAPP001", "Error sending message to the queue " + queueName, ex);
 		}
-		public void setQueueName(String newQueueName) {
-			this.queueName = newQueueName;
-			return;
-			}
+		
+	}
 
-		public String getQueueName() {
-			return this.queueName;
-			}
+	public void setQueueName(String newQueueName) {
+		this.queueName = newQueueName;
+		return;
+	}
+
+	public String getQueueName() {
+		return this.queueName;
 	}
 	
 	public String receiveMessage() {
